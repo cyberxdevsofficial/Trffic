@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Traffic Sender</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+font-family:Arial;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+}
+
+.box{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+padding:40px;
+border-radius:15px;
+width:320px;
+text-align:center;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#00e0ff;
+border:none;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+background:#00bcd4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Traffic Generator</h2>
+
+<input id="url" placeholder="Enter Website URL">
+<input id="count" type="number" placeholder="Traffic Amount">
+
+<button onclick="sendTraffic()">Start</button>
+
+<p id="status"></p>
+
+</div>
+
+<script>
+
+async function sendTraffic(){
+
+let url=document.getElementById("url").value
+let count=document.getElementById("count").value
+
+document.getElementById("status").innerText="Sending..."
+
+let res=await fetch("/api/send",{
+method:"POST",
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify({url,count})
+})
+
+let data=await res.json()
+
+document.getElementById("status").innerText=data.message
+
+}
+
+</script>
+
+</body>
+</html>
