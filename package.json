@@ -1,0 +1,19 @@
+{
+"name": "traffic-generator",
+"version": "1.0.0",
+"description": "Simple website traffic sender tool deployed on Vercel",
+"main": "api/send.js",
+"scripts": {
+"start": "vercel dev",
+"deploy": "vercel deploy"
+},
+"keywords": [
+"vercel",
+"serverless",
+"traffic",
+"api"
+],
+"author": "CyberX Devs",
+"license": "MIT",
+"dependencies": {}
+}
